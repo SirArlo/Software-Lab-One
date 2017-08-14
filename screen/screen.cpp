@@ -13,6 +13,49 @@ Screen::Screen(string::size_type height, string::size_type width, char bkground)
 										// character value of bkground
 { /* all the work is done with the member initialization list */ }
 
+void Screen::EmptySquare(unsigned int x,unsigned int y, unsigned int length){ // x and y are the cords of the top left corner with length
+
+    if(x + (length-1) > _width){
+        
+        cerr<<"Not enough space for entered dimensions" << endl;
+        return;
+        }
+        
+    if(y + (length-1) > _height){
+        
+        cerr<<"Not enough space for entered dimensions" << endl;
+        return;
+        
+        }
+        
+        
+    clear(' ');
+    move(x,y);  // sets original starting position
+    set('*');
+    
+    for(int j =0; j <length -1 ;j++){ // moves cursor forward right continously printing stars
+        forward();
+        set('*');
+        }
+        
+        for(int j =0; j <length -1 ;j++){ // moves cursor down continously printing stars
+        down();
+        set('*');
+        }
+        
+        for(int j =0; j <length -1 ;j++){ // moves cursor back left continously printing stars
+        back();
+        set('*');
+        }
+        
+        for(int j =0; j <length -2 ;j++){ // moves cursor up continously printing stars
+        up();
+        set('*');
+        }
+        display();
+    
+}
+
 void Screen::forward()
 {   // advance _cursor one screen element
 	++_cursor;
@@ -227,3 +270,13 @@ reference to the requested character.
 No this is not a necessity because all of the functions called within the overloaded move function 
 already exist and it just lumps them all together in one function when they all exist separately anyway.
 The function is just a copy of existing code. 
+
+/* 4.5
+
+Yes you do need access to the private variables of the Screen class in order to implement the function as the width and height
+need to be used for error checking as well as calling functions that utlise the private variables.
+No a function like this does not, in our opinion, form part of the Screen class responsibilities as it would make more intuitive sense 
+to create another class purely for drawing shpaes as each class should have its own focus on a task and not get 
+complicated with functions that dont fit the purpose of the class.
+
+*/

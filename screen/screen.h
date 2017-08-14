@@ -28,6 +28,7 @@ public:
 	void home() { _cursor = 0;  return; }
 	// place the cursor at the bottom-right corner of the screen
 	void end() { _cursor = _width * _height - 1; return; }
+    void EmptySquare(unsigned int x,unsigned int y, unsigned int length);
 	// move the cursor one position to the right
 	void forward();
 	// move the cursor one position to the left
