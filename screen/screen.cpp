@@ -180,3 +180,17 @@ string::size_type Screen::row() const
 	return (_cursor + _width)/_width;
 }
 
+/*Three different instances of the const type in use include:
+
+   --const string::size_type TOP_LEFT = 0; 
+	--This is used so that the user is unable to change the position of the top left corner of the screen
+
+	--string::size_type Screen::remainingSpace() const 
+ 	--This is used to make sure that this member function can not change the member variable of the class
+
+	-- void Screen::set( const string& s )
+	-- This is used to make sure that the fucntion "set" cannot modify the variable "s" within the function "set" 
+   
+The "at" function of string class used in function "reSize" returns a reference to the character at specified location "pos". 
+Bounds checking is performed, exception of type std::out_of_range will be thrown on invalid access
+reference to the requested character.
