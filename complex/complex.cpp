@@ -1,29 +1,44 @@
-// complex.cpp
-// Multiplying complex numbers
-
 #include <iostream>
-#include <complex> // required for the complex class
+#include <complex>
 
 using namespace std;
-using Comp = complex<float>;  
 
-int main(){
-   
-Comp num1{ 2.0, 2.0 }; // using C++11 uniform initialisation syntax
+using Comp = complex<double>;  
 
-Comp num2{ 4.0, -2.0 }; // old syntax: complex<float> num2(4.0,-2.0);
+int main() {
+    
+    Comp a = 0.0;
+    Comp b = 0.0;
+    Comp c = 0.0;
+    char Continue;
+    
+  while(Continue != 'q'){
+      
+      cout << "Please enter a :" << endl;
+      cin >> a;
+      cout << "Please enter b :" << endl;
+      cin>> b;
+      cout << "Please enter c :" << endl;
+      cin >> c;
 
-auto answer = num1 * num2; // using C++11 auto keyword,
-                          // answer is of type: complex<float>
 
-cout << "The answer is: " << answer << endl;
-cout << "Or in a more familiar form: " << answer.real() << " + " << answer.imag() << "j" << endl;
+Comp Root = sqrt(pow(b,2) -4.0*a*c);
 
-    // answer++;
+Comp answer1 = (-b + Root)/(2.0*a);
+
+Comp answer2 = (-b - Root)/(2.0*a);
+
+cout << "The roots are: " << answer1.real() << " + " <<answer1.imag() << "j" << endl<< answer2.real() << " + " <<answer2.imag() << "j" << endl;
+    
+    
+    cout<< "Would you like to perform another calculation?"<< endl;
+    cout << "Enter y to continue or enter q to quit" << endl;
+    
+    cin >> Continue;
+    
+    
+    }
 
     return 0;
 }
-//The commented line does not work because the "answer++" declaration 
-//is attempting to use the shorthand incrementation that is solely used for integer types and therefore cannot increment the float data type
-
 
