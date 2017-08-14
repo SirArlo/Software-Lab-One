@@ -280,3 +280,15 @@ to create another class purely for drawing shpaes as each class should have its 
 complicated with functions that dont fit the purpose of the class.
 
 */
+
+/*4.6
+ 
+Yes instead of using a string type as the screen displayed you could implement a 2D character array to perform the same function which
+would be more intutive as it it basically a grid just like a screen should be interperated. 
+ 
+It is easier to change the implementation rather than the interface because if the way the fucntions work are changed (for example using a 2D character array)
+its less work than writing all new functions to work with the changes the developer wishes to make as the interface already perfoms the correct purpose. 
+
+
+
+*/
