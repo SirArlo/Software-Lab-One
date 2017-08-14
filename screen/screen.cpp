@@ -69,6 +69,32 @@ void Screen::move( string::size_type row, string::size_type col )
 	return;
 }
 
+void Screen::move(Direction dir)
+{
+    if(dir == Direction::FORWARD){
+        forward();
+    }
+    if(dir == Direction::BACK){
+        back();
+    }
+    if(dir == Direction::UP){
+        up();
+    }
+    if(dir == Direction::DOWN){
+        down();
+    }
+    
+    if(dir == Direction::HOME){
+        home();
+    }
+    
+    
+    if(dir == Direction::END){
+        end();
+    }
+    
+    return;    
+}
 char Screen::get( string::size_type row, string::size_type col )
 {
 	// position _cursor
@@ -194,3 +220,10 @@ string::size_type Screen::row() const
 The "at" function of string class used in function "reSize" returns a reference to the character at specified location "pos". 
 Bounds checking is performed, exception of type std::out_of_range will be thrown on invalid access
 reference to the requested character.
+
+
+* 4.3
+
+No this is not a necessity because all of the functions called within the overloaded move function 
+already exist and it just lumps them all together in one function when they all exist separately anyway.
+The function is just a copy of existing code. 
